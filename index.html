@@ -87,6 +87,39 @@
         
             <article class="post-list h-feed">
     <header class="post-header">
+        <h1 class="p-name post-title"><a class="u-url" href="/post/using-stacks-to-arrange-views/">Using Stacks to Arrange Views</a></h1>
+    </header>
+
+    
+        <div class="content post-summary p-summary">
+            ProgressView 추가하기 ProgressView 를 추가하는 것 자체는 큰 어려움이 없지만, Xcode12.5 기준으로 ProgressView(value:total) 선언 시, value 값이 Int 이면 canvas 에서 아래와 같은 에러가 발생한다.
+initializer 'init(value:total:)' requires that 'Int' conform to 'BinaryFloatingPoint' ---------------------------------------- CompileDylibError: Failed to build MettingView.swift Compiling failed: initializer 'init(value:total:)' requires that 'Int' conform to 'BinaryFloatingPoint' /Users/kyungkoo/works/SwiftUI-App-Dev/Scrumdinger/Scrumdinger/MettingView.swift:12:17: error: initializer 'init(value:total:)' requires that 'Int' conform to 'BinaryFloatingPoint' AnyView(ProgressView(value: __designTimeInteger(&quot;#5838.[1].[0].property.[0].[0].arg[0].value&quot;, fallback: 5), total: __designTimeInteger(&quot;#5838.[1].[0].property.[0].[0].arg[1].value&quot;, fallback: 15))) ^ SwiftUI.ProgressView:3:12: note: where 'V' = 'Int' public init&lt;V&gt;(value: V?
+        </div>
+    
+    
+    
+    
+
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">2021-05-06</div>
+    
+    
+    <a class="post-hidden-url u-url" href="https://kyungkoo.github.io/post/using-stacks-to-arrange-views/">https://kyungkoo.github.io/post/using-stacks-to-arrange-views/</a>
+    <a href=https://kyungkoo.github.io/ class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+            
+    </div>
+</div>
+
+</article>
+        
+            <article class="post-list h-feed">
+    <header class="post-header">
         <h1 class="p-name post-title"><a class="u-url" href="/post/getting-start-with-scrumdinger/">[iOS App Dev Tutorials] Getting Start With Scrumdinger</a></h1>
     </header>
 

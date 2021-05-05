@@ -6,10 +6,38 @@
     <description>kyungkoo blog (Posts)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 May 2021 00:33:39 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 06 May 2021 00:56:26 +0900</lastBuildDate>
     
     <atom:link href="https://kyungkoo.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using Stacks to Arrange Views</title>
+      <link>https://kyungkoo.github.io/post/using-stacks-to-arrange-views/</link>
+      <pubDate>Thu, 06 May 2021 00:56:26 +0900</pubDate>
+      
+      <guid>https://kyungkoo.github.io/post/using-stacks-to-arrange-views/</guid>
+      <description>&lt;h2 id=&#34;progressviewhttpsdeveloperapplecomdocumentationswiftuiprogressview-추가하기&#34;&gt;&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/progressview&#34;&gt;ProgressView&lt;/a&gt; 추가하기&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/progressview&#34;&gt;ProgressView&lt;/a&gt; 를 추가하는 것 자체는 큰 어려움이 없지만, Xcode12.5 기준으로 &lt;code&gt;ProgressView(value:total)&lt;/code&gt; 선언 시, &lt;code&gt;value&lt;/code&gt; 값이 &lt;code&gt;Int&lt;/code&gt; 이면 canvas 에서 아래와 같은 에러가 발생한다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39;
+
+----------------------------------------
+
+CompileDylibError: Failed to build MettingView.swift
+
+Compiling failed: initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39;
+
+/Users/kyungkoo/works/SwiftUI-App-Dev/Scrumdinger/Scrumdinger/MettingView.swift:12:17: error: initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39;
+        AnyView(ProgressView(value: __designTimeInteger(&amp;quot;#5838.[1].[0].property.[0].[0].arg[0].value&amp;quot;, fallback: 5), total: __designTimeInteger(&amp;quot;#5838.[1].[0].property.[0].[0].arg[1].value&amp;quot;, fallback: 15)))
+                ^
+SwiftUI.ProgressView:3:12: note: where &#39;V&#39; = &#39;Int&#39;
+    public init&amp;lt;V&amp;gt;(value: V?, total: V = 1.0) where Label == EmptyView, CurrentValueLabel == EmptyView, V : BinaryFloatingPoint
+           ^
+==================================
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;재미있는점은 이 에러는 canvas 에서만 발생하고, 실제 빌드 및 시뮬레이터 에서는 정상적으로 동작한다는 점이다.&lt;/p&gt;
+&lt;p&gt;위 문제를 해결하기 위해서는 &lt;code&gt;value&lt;/code&gt; 에 &lt;code&gt;5.0&lt;/code&gt; 와 같이 &lt;code&gt;Float&lt;/code&gt; 타입을 입력해주어야 한다.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>[iOS App Dev Tutorials] Getting Start With Scrumdinger</title>
