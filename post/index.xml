@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Using Stacks to Arrange Views</title>
+      <title>[iOS App Dev Tutorials] Using Stacks to Arrange Views</title>
       <link>https://kyungkoo.github.io/post/using-stacks-to-arrange-views/</link>
       <pubDate>Thu, 06 May 2021 00:56:26 +0900</pubDate>
       
@@ -35,7 +35,7 @@ SwiftUI.ProgressView:3:12: note: where &#39;V&#39; = &#39;Int&#39;
            ^
 ==================================
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;재미있는점은 이 에러는 canvas 에서만 발생하고, 실제 빌드 및 시뮬레이터 에서는 정상적으로 동작한다는 점이다.&lt;/p&gt;
-&lt;p&gt;위 문제를 해결하기 위해서는 &lt;code&gt;value&lt;/code&gt; 에 &lt;code&gt;5.0&lt;/code&gt; 와 같이 &lt;code&gt;Float&lt;/code&gt; 타입을 입력해주어야 한다.&lt;/p&gt;
+&lt;p&gt;위 문제를 해결하기 위해 &lt;code&gt;value&lt;/code&gt; 에는 &lt;code&gt;5.0&lt;/code&gt; 와 같이 &lt;code&gt;Float&lt;/code&gt; 타입으로 값을 입력해 주도록 하자.&lt;/p&gt;
 </description>
     </item>
     

@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 
-<title>Using Stacks to Arrange Views - kyungkoo blog</title>
+<title>[iOS App Dev Tutorials] Using Stacks to Arrange Views - kyungkoo blog</title>
 <meta name="description" content="">
 
 <link rel="icon" type="image/x-icon" href="https://kyungkoo.github.io/favicon.ico">
@@ -36,7 +36,7 @@
 
 
 
-<meta property="og:title" content="Using Stacks to Arrange Views" />
+<meta property="og:title" content="[iOS App Dev Tutorials] Using Stacks to Arrange Views" />
 <meta property="og:description" content="ProgressView 추가하기 ProgressView 를 추가하는 것 자체는 큰 어려움이 없지만, Xcode12.5 기준으로 ProgressView(value:total) 선언 시, value 값이 Int 이면 canvas 에서 아래와 같은 에러가 발생한다.
 initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39; ---------------------------------------- CompileDylibError: Failed to build MettingView.swift Compiling failed: initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39; /Users/kyungkoo/works/SwiftUI-App-Dev/Scrumdinger/Scrumdinger/MettingView.swift:12:17: error: initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39; AnyView(ProgressView(value: __designTimeInteger(&quot;#5838.[1].[0].property.[0].[0].arg[0].value&quot;, fallback: 5), total: __designTimeInteger(&quot;#5838.[1].[0].property.[0].[0].arg[1].value&quot;, fallback: 15))) ^ SwiftUI.ProgressView:3:12: note: where &#39;V&#39; = &#39;Int&#39; public init&lt;V&gt;(value: V?" />
 <meta property="og:type" content="article" />
@@ -46,7 +46,7 @@ initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Using Stacks to Arrange Views"/>
+<meta name="twitter:title" content="[iOS App Dev Tutorials] Using Stacks to Arrange Views"/>
 <meta name="twitter:description" content="ProgressView 추가하기 ProgressView 를 추가하는 것 자체는 큰 어려움이 없지만, Xcode12.5 기준으로 ProgressView(value:total) 선언 시, value 값이 Int 이면 canvas 에서 아래와 같은 에러가 발생한다.
 initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39; ---------------------------------------- CompileDylibError: Failed to build MettingView.swift Compiling failed: initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39; /Users/kyungkoo/works/SwiftUI-App-Dev/Scrumdinger/Scrumdinger/MettingView.swift:12:17: error: initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to &#39;BinaryFloatingPoint&#39; AnyView(ProgressView(value: __designTimeInteger(&quot;#5838.[1].[0].property.[0].[0].arg[0].value&quot;, fallback: 5), total: __designTimeInteger(&quot;#5838.[1].[0].property.[0].[0].arg[1].value&quot;, fallback: 15))) ^ SwiftUI.ProgressView:3:12: note: where &#39;V&#39; = &#39;Int&#39; public init&lt;V&gt;(value: V?"/>
 
@@ -84,7 +84,7 @@ initializer &#39;init(value:total:)&#39; requires that &#39;Int&#39; conform to 
     
     <article class="post h-entry">
         <header class="post-header">
-            <h1 class="p-name post-title">Using Stacks to Arrange Views</h1>
+            <h1 class="p-name post-title">[iOS App Dev Tutorials] Using Stacks to Arrange Views</h1>
         </header>
         <div class="content e-content">
             <h2 id="progressviewhttpsdeveloperapplecomdocumentationswiftuiprogressview-추가하기"><a href="https://developer.apple.com/documentation/swiftui/progressview">ProgressView</a> 추가하기</h2>
@@ -105,7 +105,7 @@ SwiftUI.ProgressView:3:12: note: where 'V' = 'Int'
            ^
 ==================================
 </code></pre><p>재미있는점은 이 에러는 canvas 에서만 발생하고, 실제 빌드 및 시뮬레이터 에서는 정상적으로 동작한다는 점이다.</p>
-<p>위 문제를 해결하기 위해서는 <code>value</code> 에 <code>5.0</code> 와 같이 <code>Float</code> 타입을 입력해주어야 한다.</p>
+<p>위 문제를 해결하기 위해 <code>value</code> 에는 <code>5.0</code> 와 같이 <code>Float</code> 타입으로 값을 입력해 주도록 하자.</p>
 
         </div>
         
