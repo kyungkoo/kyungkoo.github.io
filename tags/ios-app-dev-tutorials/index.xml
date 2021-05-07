@@ -18,7 +18,7 @@
       
       <guid>https://kyungkoo.github.io/post/using-stacks-to-arrange-views/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/tutorials/app-dev-training/using-stacks-to-arrange-views&#34;&gt;Using Stacks to Arrange Views&lt;/a&gt; 에서는 프로젝트 생성 한 후, &lt;code&gt;MeetingView&lt;/code&gt; 화면을 만든다.&lt;/p&gt;
-&lt;h2 id=&#34;프로젝트-기본-구조&#34;&gt;프로젝트 기본 구조&lt;/h2&gt;
+&lt;h1 id=&#34;프로젝트-구조&#34;&gt;프로젝트 구조&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;Scrumdinger&lt;/code&gt; 프로젝트 구조는 다음과 같다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Scrumdinger
@@ -39,10 +39,10 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;contentviewswift-살펴보기&#34;&gt;&lt;code&gt;ContentView.swift&lt;/code&gt; 살펴보기&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;ContentView.swift&lt;/code&gt; 에는 두 개의 구조체가 있는데, 하나는 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view&#34;&gt;&lt;code&gt;View&lt;/code&gt;&lt;/a&gt; 프로토콜을 구현한 &lt;code&gt;ContentView&lt;/code&gt; 이고, 다른 하나는 canvas 에 나타내는데 필요한 &lt;code&gt;ContentView_Previews&lt;/code&gt; 이다.&lt;/p&gt;
+&lt;h1 id=&#34;contentviewswift-살펴보기&#34;&gt;&lt;code&gt;ContentView.swift&lt;/code&gt; 살펴보기&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;ContentView.swift&lt;/code&gt; 에는 두 개의 구조체가 있는데, 하나는 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view&#34;&gt;&lt;code&gt;View&lt;/code&gt;&lt;/a&gt; 프로토콜을 구현한 &lt;code&gt;ContentView&lt;/code&gt;고, 다른 하나는 canvas 에 나타내는데 필요한 &lt;code&gt;ContentView_Previews&lt;/code&gt;다.&lt;/p&gt;
 &lt;p&gt;SwiftUI 에서 UI를 구현하기 위해서는 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view&#34;&gt;&lt;code&gt;View&lt;/code&gt;&lt;/a&gt; 프로토콜 구현체가 필요하며, 구현체는 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view/body-swift.property&#34;&gt;&lt;code&gt;body&lt;/code&gt;&lt;/a&gt; 라는 &lt;code&gt;computed property&lt;/code&gt; 를 구현해야 한다. 결국 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view/body-swift.property&#34;&gt;&lt;code&gt;body&lt;/code&gt;&lt;/a&gt;에 UI 에 필요한 모든 구성요소를 추가해 원하는 화면을 만들게 된다.&lt;/p&gt;
-&lt;h2 id=&#34;progressview-추가-시-canvas-issue&#34;&gt;&lt;code&gt;ProgressView&lt;/code&gt; 추가 시 canvas issue&lt;/h2&gt;
+&lt;h1 id=&#34;progressview-추가-시-canvas-issue&#34;&gt;&lt;code&gt;ProgressView&lt;/code&gt; 추가 시 canvas issue&lt;/h1&gt;
 &lt;p&gt;예제 초반에 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/progressview&#34;&gt;ProgressView&lt;/a&gt; 를 화면에 추가하게 되는데, 추가하는 것 자체는 큰 어려움이 없지만, Xcode12.5 기준으로 &lt;code&gt;ProgressView(value:total)&lt;/code&gt; 선언 시, &lt;code&gt;value&lt;/code&gt; 값이 &lt;code&gt;Int&lt;/code&gt; 이면 canvas 에서 아래와 같은 에러가 발생한다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;initializer &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;init(value:total:)&amp;#39;&lt;/span&gt; requires that &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Int&amp;#39;&lt;/span&gt; conform to &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BinaryFloatingPoint&amp;#39;&lt;/span&gt;
 
@@ -61,10 +61,14 @@ SwiftUI.ProgressView:3:12: note: where &lt;span style=&#34;color:#e6db74&#34;&gt
 &lt;span style=&#34;color:#f92672&#34;&gt;==================================&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;재미있는점은 이 에러는 canvas 에서만 발생하고, 실제 빌드 및 시뮬레이터 에서는 정상적으로 동작한다는 점이다.&lt;/p&gt;
 &lt;p&gt;위 문제를 해결하기 위해 &lt;code&gt;value&lt;/code&gt; 에는 &lt;code&gt;5.0&lt;/code&gt; 와 같이 &lt;code&gt;Float&lt;/code&gt; 타입으로 값을 입력해 주도록 하자.&lt;/p&gt;
+&lt;h1 id=&#34;컨포넌트-살펴보기&#34;&gt;컨포넌트 살펴보기&lt;/h1&gt;
+&lt;p&gt;프로젝트 초반이다보니 여러 컴포넌트를 사용하게 된다.
+각 컴포넌트에 대해 간략하게 살펴보자.&lt;/p&gt;
 &lt;h2 id=&#34;hstack-과-vstack&#34;&gt;HStack 과 VStack&lt;/h2&gt;
 &lt;p&gt;SwiftUI 에서는 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/hstack&#34;&gt;&lt;code&gt;HStack&lt;/code&gt;&lt;/a&gt; 과 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/vstack&#34;&gt;&lt;code&gt;VStack&lt;/code&gt;&lt;/a&gt; 을 사용하여 컴포넌트를 배치한다. 이름에서 알 수 있듯이 &lt;code&gt;HStack&lt;/code&gt; 은 가로, &lt;code&gt;VStack&lt;/code&gt; 은 세로로 컴포넌트를 배치한다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;UIKit&lt;/code&gt; 에서 constraints 를 사용하여 컴포넌트 간 제약을 정의하여 배치를 결정했던것에 비해 훨씬 편리한 방식으로 배치할 수 있다는 것을 알 수 있다.&lt;/p&gt;
-&lt;p&gt;이는 Android 의 &lt;a href=&#34;https://developer.android.com/guide/topics/ui/layout/linear?hl=ko&#34;&gt;&lt;code&gt;LinearLayout&lt;/code&gt;&lt;/a&gt;과 비슷하다는 느낌을 받았다. 반면, Android 에서는 constraints 개념을 갖는 &lt;a href=&#34;https://developer.android.com/training/constraint-layout?hl=ko&#34;&gt;&lt;code&gt;ConstraintLayout&lt;/code&gt;&lt;/a&gt; 이 활발하게 사용되고 있으니 두 플랫폼이 서로 주고 받는게 하나 더 늘었구나 하는 생각이 들었다.&lt;/p&gt;
+&lt;p&gt;개인적으로 Android 의 &lt;a href=&#34;https://developer.android.com/guide/topics/ui/layout/linear?hl=ko&#34;&gt;&lt;code&gt;LinearLayout&lt;/code&gt;&lt;/a&gt;이 떠올랐는데 기능도 흡사하다는 생각이 들었다.
+Android 에서는 constraints 개념을 갖는 &lt;a href=&#34;https://developer.android.com/training/constraint-layout?hl=ko&#34;&gt;&lt;code&gt;ConstraintLayout&lt;/code&gt;&lt;/a&gt; 이 활발하게 사용되고 있으니 두 플랫폼이 서로 주고 받는게 하나 더 늘었구나 하는 생각도 들었다.&lt;/p&gt;
 &lt;h2 id=&#34;text-와-label&#34;&gt;Text 와 Label&lt;/h2&gt;
 &lt;p&gt;예제에서는 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text&#34;&gt;&lt;code&gt;Text&lt;/code&gt;&lt;/a&gt; 와 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/label&#34;&gt;&lt;code&gt;Label&lt;/code&gt;&lt;/a&gt; 을 사용하여 문자를 표시한다.&lt;/p&gt;
 &lt;h3 id=&#34;1-texthttpsdeveloperapplecomdocumentationswiftuitext&#34;&gt;1) &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text&#34;&gt;&lt;code&gt;Text&lt;/code&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -73,7 +77,7 @@ SwiftUI.ProgressView:3:12: note: where &lt;span style=&#34;color:#e6db74&#34;&gt
 &lt;h3 id=&#34;2-labelhttpsdeveloperapplecomdocumentationswiftuilabel&#34;&gt;2) &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/label&#34;&gt;&lt;code&gt;Label&lt;/code&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/label&#34;&gt;&lt;code&gt;Label&lt;/code&gt;&lt;/a&gt;은 텍스트와 이미지를 갖는 컴포넌트다. 기본적으로 &amp;lt;이미지&amp;gt;-&amp;lt;텍스트&amp;gt; 순서로 나타나며, &lt;a href=&#34;https://developer.apple.com/sf-symbols/&#34;&gt;&lt;code&gt;SFSymbol&lt;/code&gt;&lt;/a&gt; 을 사용하여 손쉽게 이미지와 텍스트를 가변할 수도 있다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Label&lt;/code&gt; 생성자는 텍스트, 이미지 순서로 입력받지만, 화면에는 이미지, 텍스트 순서로 출력된다.
-입력 받는 순서대로 출력 되었으면 더 직관적이지 않았을까 하는 아쉬움이 들었다.&lt;/p&gt;
+입력 받는 순서대로 출력 되었으면 더 직관적이지 않을까 하는 생각이 든다.&lt;/p&gt;
 &lt;h2 id=&#34;spacer&#34;&gt;&lt;code&gt;Spacer&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/spacer&#34;&gt;&lt;code&gt;Spacer&lt;/code&gt;&lt;/a&gt;를 사용하면 컴포넌트간 간격을 손쉽게 조절할 수 있다. 말 그대로 공간을 차자하는 컴포넌트다. &lt;code&gt;UIKit&lt;/code&gt; 에서는 constraints 으로 컴포넌트 간 간격을 설정했다면, &lt;code&gt;SwiftUI&lt;/code&gt; 에서는 컴포넌트 사이에 &lt;code&gt;Spacer&lt;/code&gt; 를 추가하여 원하는 간격을 손쉽게 만들어낼 수 있다.&lt;/p&gt;
 &lt;h2 id=&#34;circle&#34;&gt;&lt;code&gt;Circle&lt;/code&gt;&lt;/h2&gt;
@@ -88,7 +92,7 @@ SwiftUI.ProgressView:3:12: note: where &lt;span style=&#34;color:#e6db74&#34;&gt
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-swift&#34; data-lang=&#34;swift&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Button&lt;/span&gt;&amp;lt;Label&amp;gt; : View &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; Label : View {
   &lt;span style=&#34;color:#75715e&#34;&gt;//&lt;/span&gt;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;위 선언에서 보다시피 &lt;code&gt;Label&lt;/code&gt; 은 결국 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view&#34;&gt;&lt;code&gt;View&lt;/code&gt;&lt;/a&gt; 구현체이기 때문에 SwiftUI 에서 사용하는 모든 컴포넌트를 &lt;code&gt;Button&lt;/code&gt; 에 추가할 수가 있는 것이다.&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;위 선언에서 보다시피 &lt;code&gt;Label&lt;/code&gt; 은 결국 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view&#34;&gt;&lt;code&gt;View&lt;/code&gt;&lt;/a&gt; 구현체이기 때문에 SwiftUI 에서 사용하는 모든 컴포넌트를 &lt;code&gt;Button&lt;/code&gt; 에 추가할 수 있다.&lt;/p&gt;</description>
     </item>
     
     <item>
