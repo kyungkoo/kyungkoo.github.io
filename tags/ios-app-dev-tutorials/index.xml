@@ -92,7 +92,16 @@ Android 에서는 constraints 개념을 갖는 &lt;a href=&#34;https://developer
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-swift&#34; data-lang=&#34;swift&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Button&lt;/span&gt;&amp;lt;Label&amp;gt; : View &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; Label : View {
   &lt;span style=&#34;color:#75715e&#34;&gt;//&lt;/span&gt;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;위 선언에서 보다시피 &lt;code&gt;Label&lt;/code&gt; 은 결국 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view&#34;&gt;&lt;code&gt;View&lt;/code&gt;&lt;/a&gt; 구현체이기 때문에 SwiftUI 에서 사용하는 모든 컴포넌트를 &lt;code&gt;Button&lt;/code&gt; 에 추가할 수 있다.&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;위 선언에서 보다시피 &lt;code&gt;Label&lt;/code&gt; 은 결국 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view&#34;&gt;&lt;code&gt;View&lt;/code&gt;&lt;/a&gt; 구현체이기 때문에 SwiftUI 에서 사용하는 모든 컴포넌트를 &lt;code&gt;Button&lt;/code&gt; 에 추가할 수 있다.&lt;/p&gt;
+&lt;h2 id=&#34;supplement-accessibility-data&#34;&gt;Supplement Accessibility Data&lt;/h2&gt;
+&lt;p&gt;예제를 하면서 가장 놀라웠던 내용이었다. 튜토리얼 에서 Accessibility 를 이토록 지속적이고 실무에 사용할 수 있을 정도로 다루는걸 본 적이 없었기 때문이다.
+한편으로는 그만큼 애플이 Accessibility 지원에 많은 고민을 하고 있다는 것을 알 수 있었고,
+예제를 통해 SwiftUI 에서 Accessibility 를 지원하는 일이 결코 어려운일이 아니라는 것을 느낄 수 있었다.&lt;/p&gt;
+&lt;p&gt;SwiftUI 는 기본적으로 Accessibility 를 &lt;strong&gt;잘&lt;/strong&gt; 지원하기 때문에 별도 처리를 할 필요가 없지만, 사용자에게 정확하고 필요한 정보만을 제공하도록 &lt;strong&gt;일부&lt;/strong&gt; 설정을 해 주어야 한다.
+한 예로, custom view 를 만드는 경우, 뷰가 갖고 있는 모든 내용을 알려주기 보다는 사용자에게 필요한 정보만 요약, 정리해서 알려주는것이 UX 적으로 훨씬 좋은 경험을 제공할 것이다.&lt;/p&gt;
+&lt;p&gt;첫 번째로 나오는 내용이 바로 이것이다.
+&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilityelement(children:)&#34;&gt;&lt;code&gt;accessibilityElement(children: .ignore)&lt;/code&gt;&lt;/a&gt; 를 통해 &lt;code&gt;HStack&lt;/code&gt; 내부 컨포넌트가 설명되는것을 피하고, &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilitylabel(_:)-7wzu8&#34;&gt;&lt;code&gt;accessibilityLabel(Text(&amp;quot;Time remaining&amp;quot;))&lt;/code&gt;&lt;/a&gt; 와 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view/accessibilityvalue(_:)-z9mo&#34;&gt;&lt;code&gt;accessibilityValue(Text(&amp;quot;10 minutes&amp;quot;))&lt;/code&gt;&lt;/a&gt;로 컴포넌트가 나타내고자 하는 내용을 정의해 사용자에게 필요한 정보를 효과적으로 전달 할 수 있도록 변경했다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text-view-modifiers&#34;&gt;View Modifiers&lt;/a&gt; 에서 SwiftUI 에서 사용 가능한 Accessibility 관련 기능을 자세히 확인 할 수 있으니 참고하자.&lt;/p&gt;</description>
     </item>
     
     <item>
