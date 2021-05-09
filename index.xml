@@ -61,7 +61,7 @@ SwiftUI.ProgressView:3:12: note: where &lt;span style=&#34;color:#e6db74&#34;&gt
 &lt;span style=&#34;color:#f92672&#34;&gt;==================================&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;재미있는점은 이 에러는 canvas 에서만 발생하고, 실제 빌드 및 시뮬레이터 에서는 정상적으로 동작한다는 점이다.&lt;/p&gt;
 &lt;p&gt;위 문제를 해결하기 위해 &lt;code&gt;value&lt;/code&gt; 에는 &lt;code&gt;5.0&lt;/code&gt; 와 같이 &lt;code&gt;Float&lt;/code&gt; 타입으로 값을 입력해 주도록 하자.&lt;/p&gt;
-&lt;h1 id=&#34;컨포넌트-살펴보기&#34;&gt;컨포넌트 살펴보기&lt;/h1&gt;
+&lt;h1 id=&#34;컴포넌트-살펴보기&#34;&gt;컴포넌트 살펴보기&lt;/h1&gt;
 &lt;p&gt;프로젝트 초반이다보니 여러 컴포넌트를 사용하게 된다.
 각 컴포넌트에 대해 간략하게 살펴보자.&lt;/p&gt;
 &lt;h2 id=&#34;hstack-과-vstack&#34;&gt;HStack 과 VStack&lt;/h2&gt;
@@ -100,7 +100,7 @@ Android 에서는 constraints 개념을 갖는 &lt;a href=&#34;https://developer
 &lt;p&gt;SwiftUI 는 기본적으로 Accessibility 를 &lt;strong&gt;잘&lt;/strong&gt; 지원하기 때문에 별도 처리를 할 필요가 없지만, 사용자에게 정확하고 필요한 정보만을 제공하도록 &lt;strong&gt;일부&lt;/strong&gt; 설정을 해 주어야 한다.
 한 예로, custom view 를 만드는 경우, 뷰가 갖고 있는 모든 내용을 알려주기 보다는 사용자에게 필요한 정보만 요약, 정리해서 알려주는것이 UX 적으로 훨씬 좋은 경험을 제공할 것이다.&lt;/p&gt;
 &lt;p&gt;첫 번째로 나오는 내용이 바로 이것이다.
-&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilityelement(children:)&#34;&gt;&lt;code&gt;accessibilityElement(children: .ignore)&lt;/code&gt;&lt;/a&gt; 를 통해 &lt;code&gt;HStack&lt;/code&gt; 내부 컨포넌트가 설명되는것을 피하고, &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilitylabel(_:)-7wzu8&#34;&gt;&lt;code&gt;accessibilityLabel(Text(&amp;quot;Time remaining&amp;quot;))&lt;/code&gt;&lt;/a&gt; 와 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view/accessibilityvalue(_:)-z9mo&#34;&gt;&lt;code&gt;accessibilityValue(Text(&amp;quot;10 minutes&amp;quot;))&lt;/code&gt;&lt;/a&gt;로 컴포넌트가 나타내고자 하는 내용을 정의해 사용자에게 필요한 정보를 효과적으로 전달 할 수 있도록 변경했다.&lt;/p&gt;
+&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilityelement(children:)&#34;&gt;&lt;code&gt;accessibilityElement(children: .ignore)&lt;/code&gt;&lt;/a&gt; 를 통해 &lt;code&gt;HStack&lt;/code&gt; 내부 컴포넌트가 설명되는것을 피하고, &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilitylabel(_:)-7wzu8&#34;&gt;&lt;code&gt;accessibilityLabel(Text(&amp;quot;Time remaining&amp;quot;))&lt;/code&gt;&lt;/a&gt; 와 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view/accessibilityvalue(_:)-z9mo&#34;&gt;&lt;code&gt;accessibilityValue(Text(&amp;quot;10 minutes&amp;quot;))&lt;/code&gt;&lt;/a&gt;로 컴포넌트가 나타내고자 하는 내용을 정의해 사용자에게 필요한 정보를 효과적으로 전달 할 수 있도록 변경했다.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text-view-modifiers&#34;&gt;View Modifiers&lt;/a&gt; 에서 SwiftUI 에서 사용 가능한 Accessibility 관련 기능을 자세히 확인 할 수 있으니 참고하자.&lt;/p&gt;</description>
     </item>
     
