@@ -6,10 +6,38 @@
     <description>devlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 May 2021 00:56:26 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 May 2021 23:11:23 +0900</lastBuildDate>
     
     <atom:link href="https://kyungkoo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Creating a Cardview</title>
+      <link>https://kyungkoo.github.io/post/creating-a-cardview/</link>
+      <pubDate>Sun, 16 May 2021 23:11:23 +0900</pubDate>
+      
+      <guid>https://kyungkoo.github.io/post/creating-a-cardview/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/tutorials/app-dev-training/creating-a-cardview&#34;&gt;Creating a Cardview&lt;/a&gt; 에서는 데이터 모델과 목록 셀에서 사용할 CardView 를 만든다.&lt;/p&gt;
+&lt;h1 id=&#34;시작-전-유의사항&#34;&gt;시작 전 유의사항&lt;/h1&gt;
+&lt;p&gt;예제에서는 프로젝트에 필요한 &lt;code&gt;Color&lt;/code&gt; 관련 기능을 &lt;code&gt;extension&lt;/code&gt; 으로 미리 구현해 놓았다. 그렇기 때문에 이전 예제에서 이어서 하다보면 &lt;code&gt;Color&lt;/code&gt; 관련 기능 사용시 에러가 발생하기 때문에 사이트에서 제공하는 &lt;code&gt;Project files&lt;/code&gt; 를 다운받아서 예제를 진행하도록 하자.&lt;/p&gt;
+&lt;h1 id=&#34;dailyscrum-model&#34;&gt;DailyScrum Model&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;DailyScrum&lt;/code&gt; 모델은 &lt;code&gt;struct&lt;/code&gt; 로 생성한다. 또한, preview 에서 사용할 데이터를 &lt;code&gt;extension&lt;/code&gt; 으로 함께 구현한다.&lt;/p&gt;
+&lt;h1 id=&#34;cardview&#34;&gt;CardView&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;CardView&lt;/code&gt; 는 &lt;code&gt;DailyScrum&lt;/code&gt; 정보를 보여주는 뷰다. 구현 자체는 특별한 부분은 없지만, 몇 가지 재미난 부분이 있다.&lt;/p&gt;
+&lt;h2 id=&#34;previewlayout&#34;&gt;&lt;code&gt;previewLayout&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view/previewlayout(_:)&#34;&gt;&lt;code&gt;previewLayout&lt;/code&gt;&lt;/a&gt;을 사용하면 프리뷰 화면에 나타나는 컨테이너의 크기를 변경할 수 있다. 기본적으로 프리뷰 화면은 디바이스 전체 화면이 나오지만, 이 메소드를 사용하여 원하는 크기로 변경할 수 있다.
+여기서는 &lt;code&gt;.fixed(width: 400, height: 60)&lt;/code&gt; 로 설정하였다.
+이를 통해 목록 화면을 만들지 않더라도 목록 화면에 나타날 형태를 쉽게 확인할 수 있었다.&lt;/p&gt;
+&lt;h2 id=&#34;foregroundcolorscrumcoloraccessiblefontcolor&#34;&gt;&lt;code&gt;foregroundColor(scrum.color.accessibleFontColor)&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;accessibleFontColor&lt;/code&gt; 는 &lt;code&gt;Color+Codable.swift&lt;/code&gt; 에서 확인 할 수 있다. &lt;code&gt;scrum&lt;/code&gt; 배경색에 기반하여 가독성이 좋은 색상을 반환한다. 이를 화면 전체에 해당하는 &lt;code&gt;VStack&lt;/code&gt; 에 &lt;code&gt;foregroundColor&lt;/code&gt; 로 적용하여 모든 텍스트에 일괄 적용되도록 처리하였다.
+단순히 예제만 따라하면 어떤 차이가 있는지 모를 수도 있지만, &lt;code&gt;preview&lt;/code&gt; 에서 scrum 데이터를 변경하거나 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/view/background(_:alignment:)&#34;&gt;&lt;code&gt;background&lt;/code&gt;&lt;/a&gt; 값을 제거해보면 차이를 쉽게 알 수 있을 것이다.&lt;/p&gt;
+&lt;h2 id=&#34;accessibility&#34;&gt;Accessibility&lt;/h2&gt;
+&lt;p&gt;예제 전반적으로 &lt;code&gt;Accessibility&lt;/code&gt; 를 상당히 강조한다는 것을 알 수 있다.
+여기서는 &lt;code&gt;Label&lt;/code&gt; 의 &lt;code&gt;Accessibility&lt;/code&gt; 를 재정의하는데, 먼저 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilityelement(children:)&#34;&gt;&lt;code&gt;accessibilityElement(children: .ignore)&lt;/code&gt;&lt;/a&gt; 로 기존 정보는 무시하고, &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilitylabel(_:)-7wzu8&#34;&gt;&lt;code&gt;accessibilityLabel&lt;/code&gt;&lt;/a&gt; 와 &lt;a href=&#34;https://developer.apple.com/documentation/swiftui/text/accessibilityvalue(_:)-7vn9b&#34;&gt;&lt;code&gt;accessibilityValue&lt;/code&gt;&lt;/a&gt; 를 통해 새로운 이름과 값을 설정 한다.&lt;/p&gt;
+&lt;h1 id=&#34;마침&#34;&gt;마침&lt;/h1&gt;
+&lt;p&gt;이번 예제에서는 &lt;code&gt;accessibleFontColor&lt;/code&gt; 를 사용한 가독성 처리가 인상깊었다.
+배경색이 가변하는 화면에서는 유용하게 사용할 수 있지 않을까 하는 생각이 들었다.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Using Stacks to Arrange Views</title>
