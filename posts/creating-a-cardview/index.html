@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Creating a Cardview - devlog</title>
+<meta name="description" content="">
+
+<link rel="icon" type="image/x-icon" href="https://kyungkoo.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://kyungkoo.github.io/favicon.png">
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="https://kyungkoo.github.io/css/style.1d8233f454bf6bbf46abed7023dbbba557fc4af5f1e39de066ac496c94409622.css" integrity="sha256-HYIz9FS/a79Gq&#43;1wI9u7pVf8SvXx453gZqxJbJRAliI=">
+    
+
+
+
+
+
+<meta property="og:title" content="Creating a Cardview" />
+<meta property="og:description" content="Creating a Cardview 에서는 데이터 모델과 목록 셀에서 사용할 CardView 를 만든다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kyungkoo.github.io/posts/creating-a-cardview/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-16T23:11:23+09:00" />
+<meta property="article:modified_time" content="2021-05-16T23:11:23+09:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creating a Cardview"/>
+<meta name="twitter:description" content="Creating a Cardview 에서는 데이터 모델과 목록 셀에서 사용할 CardView 를 만든다."/>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <h1 class="site-title">
+    <a href="/">devlog</a>
+</h1>
+
+    <nav>
+        
+        
+        <a class="" href="https://kyungkoo.github.io/tags/" title="">Tags</a>
+        
+    </nav>
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+    
+    <article class="post h-entry">
+        <header class="post-header">
+            <h1 class="p-name post-title">Creating a Cardview</h1>
+        </header>
+        <div class="content e-content">
+            <p><a href="https://developer.apple.com/tutorials/app-dev-training/creating-a-cardview">Creating a Cardview</a> 에서는 데이터 모델과 목록 셀에서 사용할 CardView 를 만든다.</p>
+<h1 id="시작-전-유의사항">시작 전 유의사항</h1>
+<p>예제에서는 프로젝트에 필요한 <code>Color</code> 관련 기능을 <code>extension</code> 으로 미리 구현해 놓았다. 그렇기 때문에 이전 예제에서 이어서 하다보면 <code>Color</code> 관련 기능 사용시 에러가 발생하기 때문에 사이트에서 제공하는 <code>Project files</code> 를 다운받아서 예제를 진행하도록 하자.</p>
+<h1 id="dailyscrum-model">DailyScrum Model</h1>
+<p><code>DailyScrum</code> 모델은 <code>struct</code> 로 생성한다. 또한, preview 에서 사용할 데이터를 <code>extension</code> 으로 함께 구현한다.</p>
+<h1 id="cardview">CardView</h1>
+<p><code>CardView</code> 는 <code>DailyScrum</code> 정보를 보여주는 뷰다. 구현 자체는 특별한 부분은 없지만, 몇 가지 재미난 부분이 있다.</p>
+<h2 id="previewlayout"><code>previewLayout</code></h2>
+<p><a href="https://developer.apple.com/documentation/swiftui/view/previewlayout(_:)"><code>previewLayout</code></a>을 사용하면 프리뷰 화면에 나타나는 컨테이너의 크기를 변경할 수 있다. 기본적으로 프리뷰 화면은 디바이스 전체 화면이 나오지만, 이 메소드를 사용하여 원하는 크기로 변경할 수 있다.
+여기서는 <code>.fixed(width: 400, height: 60)</code> 로 설정하였다.
+이를 통해 목록 화면을 만들지 않더라도 목록 화면에 나타날 형태를 쉽게 확인할 수 있었다.</p>
+<h2 id="foregroundcolorscrumcoloraccessiblefontcolor"><code>foregroundColor(scrum.color.accessibleFontColor)</code></h2>
+<p><code>accessibleFontColor</code> 는 <code>Color+Codable.swift</code> 에서 확인 할 수 있다. <code>scrum</code> 배경색에 기반하여 가독성이 좋은 색상을 반환한다. 이를 화면 전체에 해당하는 <code>VStack</code> 에 <code>foregroundColor</code> 로 적용하여 모든 텍스트에 일괄 적용되도록 처리하였다.
+단순히 예제만 따라하면 어떤 차이가 있는지 모를 수도 있지만, <code>preview</code> 에서 scrum 데이터를 변경하거나 <a href="https://developer.apple.com/documentation/swiftui/view/background(_:alignment:)"><code>background</code></a> 값을 제거해보면 차이를 쉽게 알 수 있을 것이다.</p>
+<h2 id="accessibility">Accessibility</h2>
+<p>예제 전반적으로 <code>Accessibility</code> 를 상당히 강조한다는 것을 알 수 있다.
+여기서는 <code>Label</code> 의 <code>Accessibility</code> 를 재정의하는데, 먼저 <a href="https://developer.apple.com/documentation/swiftui/text/accessibilityelement(children:)"><code>accessibilityElement(children: .ignore)</code></a> 로 기존 정보는 무시하고, <a href="https://developer.apple.com/documentation/swiftui/text/accessibilitylabel(_:)-7wzu8"><code>accessibilityLabel</code></a> 와 <a href="https://developer.apple.com/documentation/swiftui/text/accessibilityvalue(_:)-7vn9b"><code>accessibilityValue</code></a> 를 통해 새로운 이름과 값을 설정 한다.</p>
+<h1 id="마침">마침</h1>
+<p>이번 예제에서는 <code>accessibleFontColor</code> 를 사용한 가독성 처리가 인상깊었다.
+배경색이 가변하는 화면에서는 유용하게 사용할 수 있지 않을까 하는 생각이 들었다.</p>
+        </div>
+        
+
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">2021-05-16</div>
+    
+    
+    <a class="post-hidden-url u-url" href="https://kyungkoo.github.io/posts/creating-a-cardview/">https://kyungkoo.github.io/posts/creating-a-cardview/</a>
+    <a href=https://kyungkoo.github.io/ class="p-name p-author post-hidden-author h-card" rel="me">kyungkoo</a>
+
+
+    <div class="post-taxonomies">
+        
+            
+                <ul class="post-tags">
+                    
+                        <li><a href="https://kyungkoo.github.io/tags/ios-app-dev-tutorials">#iOS App Dev Tutorials</a></li>
+                    
+                </ul>
+        
+    </div>
+</div>
+
+    </article>
+
+    
+        
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/posts/displaying-data-in-a-list/">Displaying Data in a List</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/posts/using-stacks-to-arrange-views/">Using Stacks to Arrange Views</a>
+            
+        </div>
+    </div>
+
+
+
+
+    
+
+    
+
+    
+
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© kyungkoo, 2021<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+    
+
+
+   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://kyungkoo.github.io/ class="p-name u-url url fn" rel="me">kyungkoo</a> 
+
+    
+
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>
