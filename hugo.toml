@@ -1,0 +1,84 @@
+baseURL = 'https://kyungkoo.github.io/'
+languageCode = 'ko-KR'
+title = 'devlog'
+theme = 'typo'
+
+# Google analytics code
+# googleAnalytics = "G-xxxxxxxxx"
+
+[taxonomies]
+tag = 'tags'
+
+[params]
+# Meta description
+description = "software development blog"
+
+mermaidTheme = "default"
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'base16-default'
+hideHeader = false
+
+# Intro on main page, content is markdown
+# homeIntroTitle = 'Hi!'
+# homeIntroContent = """
+# I am an Italian Software Engineer with a strong foundation in computer science and a passion for solving complex problems.
+# I am interested in a range of topics, including algorithms, distributed systems, databases, and information retrieval.
+# """
+
+# Collection to display on home
+homeCollectionTitle = 'Posts'
+homeCollection = 'posts'
+
+# Lists parameters
+paginationSize = 20
+listSummaries = true
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+breadcrumbs = true
+
+showFooter = true
+footerContent = """© 2025 kyungkoo - All Rights Reserved."""
+
+# Social icons
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/kyungkoo-kang-0960632ba/"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/kyungkoo"
+
+# Main menu pages
+# [[params.menu]]
+# name = "home"
+# url = "/"
+
+[[params.menu]]
+name = "posts"
+url = "/posts"
+
+[[params.menu]]
+name = "tags"
+url = "/tags"
+
+# [[params.menu]]
+# name = "about"
+# url = "/about"
+
+# Syntax highlight on code blocks
+[markup]
+[markup.highlight]
+style = 'github'
+
+[[deployment.matchers]]
+pattern = "^.+\\.(js|css|svg|ttf|woff2)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = true
+
+[[deployment.matchers]]
+pattern = "^.+\\.(png|jpg|gif|webp)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = false
